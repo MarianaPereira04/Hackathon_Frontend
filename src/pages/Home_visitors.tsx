@@ -1,9 +1,6 @@
-// src/pages/Home_visitors.tsx
-import React from "react";
-import BaseLayout1 from "../components/BaseLayout1";
-
 // ...importaciones
 import { useHistory } from "react-router-dom";
+import BaseLayout1 from "../components/BaseLayout1";
 
 const Home_visitors: React.FC = () => {
   const history = useHistory();
@@ -52,6 +49,7 @@ const Home_visitors: React.FC = () => {
       image="/imagenes/logo2.png"
       title="Wilapp"
       description="Donde el talento huilense se encuentra con el mundo"
+       backTo="/enter"
     >
       <div
         style={{

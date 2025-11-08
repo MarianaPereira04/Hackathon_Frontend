@@ -3,32 +3,23 @@ import { IonPage, IonIcon } from "@ionic/react";
 import { chevronBackOutline } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 
-interface BaseLayoutProps {
-  image?: string;
-  title: string;
-  description: string;
-  children?: React.ReactNode;
-  headerAddon?: React.ReactNode;
-  backTo?: string; // 🔹 nueva prop
+interface BaseLayout3Props {
+  image?: string;                 // Logo (opcional)
+  title: string;                  // Título
+  description: string;            // Descripción
+  children?: React.ReactNode;     // Contenido inferior (tú manejas línea y demás)
+  backTo?: string;                // Ruta opcional para la flecha (si no, goBack)
 }
 
-const BaseLayout1: React.FC<BaseLayoutProps> = ({
+const BaseLayout3: React.FC<BaseLayout3Props> = ({
   image,
   title,
   description,
   children,
-  headerAddon,
-  backTo, // 👈 la recibimos
+  backTo,
 }) => {
   const history = useHistory();
-
-  const handleGoBack = () => {
-    if (backTo) {
-      history.push(backTo); // 🔹 si existe, ir a esa ruta específica
-    } else {
-      history.goBack(); // 🔹 si no, comportamiento normal
-    }
-  };
+  const handleGoBack = () => (backTo ? history.push(backTo) : history.goBack());
 
   return (
     <IonPage style={{ background: "#a8aaa9ff" }}>
@@ -42,6 +33,7 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
           paddingTop: "2vh",
         }}
       >
+        {/* Marco tipo celular */}
         <div
           style={{
             width: "100%",
@@ -50,7 +42,7 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
             margin: "auto",
             marginTop: "1vh",
             borderRadius: "40px",
-            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
             display: "flex",
             flexDirection: "column",
             position: "relative",
@@ -58,7 +50,7 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
             backgroundColor: "#fdfcfcff",
           }}
         >
-          {/* Flecha */}
+          {/* Flecha de retroceso */}
           <IonIcon
             icon={chevronBackOutline}
             onClick={handleGoBack}
@@ -73,11 +65,11 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
             }}
           />
 
-          {/* Header */}
+          {/* Header SIN línea */}
           <div
             style={{
               width: "100%",
-              padding: "1.4rem 1rem 0.5rem 1rem",
+              padding: "1.4rem 1rem 0.5rem 1rem", // sin línea aquí
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -92,6 +84,7 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
                 width: "90%",
               }}
             >
+              {/* Logo compacto */}
               {image && (
                 <div
                   style={{
@@ -114,6 +107,7 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
                 </div>
               )}
 
+              {/* Título/Descripción */}
               <div
                 style={{
                   display: "flex",
@@ -129,7 +123,7 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
                   style={{
                     fontSize: "2rem",
                     fontWeight: 800,
-                    color: "#2e6e2f",
+                    color: "#000000ff",
                     margin: 0,
                     lineHeight: 1.1,
                   }}
@@ -148,30 +142,18 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
                 >
                   {description}
                 </p>
-
-                {headerAddon && (
-                  <div style={{ marginTop: "0.4rem" }}>{headerAddon}</div>
-                )}
               </div>
             </div>
-
-            <div
-              style={{
-                width: "72%",
-                height: "2px",
-                backgroundColor: "#000",
-                margin: "1.8rem auto 0 auto",
-                transform: "translateX(-10px)",
-              }}
-            />
           </div>
 
+          {/* Contenido inferior (tú agregas WhatsApp, línea y lista) */}
           <div
             style={{
               flex: 1,
               width: "100%",
               overflowY: "auto",
               padding: "0 1rem 1rem 1rem",
+              boxSizing: "border-box",
             }}
           >
             {children}
@@ -182,4 +164,4 @@ const BaseLayout1: React.FC<BaseLayoutProps> = ({
   );
 };
 
-export default BaseLayout1;
+export default BaseLayout3;
