@@ -1,13 +1,19 @@
 import React from "react";
-import { useHistory } from "react-router-dom"; // 🔹 Importar para navegar
+import { useHistory } from "react-router-dom";
 import "../theme/Login.css";
 import BaseLayout2 from "../components/BaseLayout2";
 
 const Login: React.FC = () => {
   const history = useHistory();
 
+  // 🔹 Ir al registro
   const handleRegisterClick = () => {
-    history.push("/register_entrepreneurs"); // 🔹 Navegar al registro
+    history.push("/register_entrepreneurs");
+  };
+
+  // 🔹 Ir al home del emprendedor
+  const handleContinueClick = () => {
+    history.push("/home_entrepreneurs");
   };
 
   return (
@@ -34,10 +40,17 @@ const Login: React.FC = () => {
           className="login-input"
         />
 
-        <button className="login-btn login-btn--primary">Continuar</button>
+        {/* 🔹 Botón que redirige al Home de emprendedores */}
+        <button
+          className="login-btn login-btn--primary"
+          onClick={handleContinueClick}
+        >
+          Continuar
+        </button>
+
         <button
           className="login-btn login-btn--secondary"
-          onClick={handleRegisterClick} // 🔹 Al hacer clic redirige
+          onClick={handleRegisterClick}
         >
           Registrate
         </button>

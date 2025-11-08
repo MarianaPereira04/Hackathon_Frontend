@@ -7,6 +7,8 @@ import Home_visitors from './pages/Home_visitors';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ListProductsVisitors from './pages/List_products_visitors';
+import Home_entrepreneurs from './pages/Home_ entrepreneurs';
+import Profile_entrepreneur from './pages/Profile_entrepreneur';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +20,8 @@ const App: React.FC = () => {
           <Route path="/login_entrepreneurs" component={Login} />
           <Route exact path="/register_entrepreneurs" component={Register} />
           <Route exact path="/list_products" component={ListProductsVisitors} />
+          <Route exact path="/home_entrepreneurs" component={Home_entrepreneurs} />
+          <Route exact path="/profile_entrepreneurs" component={Profile_entrepreneur} />
           <Route exact path="/">
             <Redirect to="/enter" />
           </Route>
